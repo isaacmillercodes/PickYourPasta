@@ -19,13 +19,28 @@
       </div>
     </div>
   </nav>
-<!-- main content -->
-  <div class="container">
-    <h1>Restaurant Stuff</h1>
+
+  <div class="restaurant_tile">
+      <div class="picture_url">{{restaurant.image_url}}</div>
+      <div class="restaurant_name">{{restaurant.name}}</div>
+      <div>
+        <div class="restaurant_city">{{restaurant.city}}</div>
+        <div class="restaurant_state">{{restaurant.state}}</div>
+      </div>
+      <div class="star_rating">{{restaurant.rating}}</div>
+      <div class="restarant_description">{{restaurant.description}}</div>
+      <div class="cuisine">{{restaurant.cuisine}}</div>
   </div>
-<!-- footer -->
-<footer id="footer">
-  <p>&copy; Pick Your Pasta</p>
-</footer>
-</body>
+  <div class="review_pane">
+    <div id="sumnumber_reviews"></div>
+    {% for review in reviews %}
+    <div class="single_review">
+      <div class="user_review"></div>
+      <div class="starts_review"></div>
+      <div class="text_review"></div>
+      <div class="date_review"></div>
+    </div>
+    {% endfor %}
+
+
 {% endblock %}

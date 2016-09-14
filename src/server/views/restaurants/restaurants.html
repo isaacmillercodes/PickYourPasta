@@ -19,13 +19,25 @@
       </div>
     </div>
   </nav>
-<!-- main content -->
-  <div class="container">
-    <h1>Restaurant Stuff</h1>
-  </div>
-<!-- footer -->
-<footer id="footer">
-  <p>&copy; Pick Your Pasta</p>
-</footer>
-</body>
+
+<div class="restaurant_section">
+  {% for restaurant in restaurants %}
+    <div class="restaurant_tile">
+        <div class="picture_url">{{restaurant.image_url}}</div>
+        <div class="restaurant_name">{{restaurant.name}}</div>
+          <div>
+            <div class="restaurant_city">{{restaurant.city}}</div>
+            <div class="restaurant_state">{{restaurant.state}}</div>
+          </div>
+          <div class="star_rating">
+            {% for num in range(0, 4) -%}
+            &#9733;
+            {%- endfor %}
+          </div>
+        <div class="restarant_description">{{restaurant.description}}</div>
+        <div class="cuisine">{{restaurant.cuisine}}</div>
+    </div>
+  {% endfor %}
+</div>
+
 {% endblock %}

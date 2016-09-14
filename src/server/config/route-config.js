@@ -12,6 +12,7 @@
     const restaurantRoute = require('../routes/restaurants');
     //route for reviews.js
     const reviewRoute = require('../routes/reviews');
+
     // *** register routes *** //
     app.use('/', routes);
     app.use('/users', userRoute);

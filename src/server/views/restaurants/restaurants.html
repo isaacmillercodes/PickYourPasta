@@ -3,30 +3,6 @@
 {% block title %}{% endblock %}
 
 {% block content %}
-<<<<<<< HEAD
-
-  <header class="container">
-    <h1>{{title}}</h1>
-    <h2>Find the Best Pasta Place in Town!</h2>
-  </header>
-  <div class="jumbotron">
-    <img src="">
-  </div>
-  <section>
-    <img src="">
-    <div></div>
-  </section>
-  <section>
-    <img src="">
-    <div></div>
-  </section>
-  <section>
-    <img src="">
-    <div></div>
-  </section>
-
-
-=======
 <body>
 <!-- navigation -->
   <nav class="navbar navbar-default" id="nav">
@@ -43,6 +19,24 @@
       </div>
     </div>
   </nav>
+  {% for restaurant in restaurants%}
+  <div class="restaurant_tile">
+    <div class="picture_url"></div>
+    <div class="restaurant_name"></div>
+    <div>
+      <div class="restaurant_city"></div>
+      <div class="restaurant_state"></div>
+    </div>
+    <div class="star_rating"></div>
+    <div class="restarant_description"></div>
+    <div class="cuisine"></div>
+  </div>
+  {% endfor %}
+  <div class="restaurant_section"></div>
+
+
+
+<!-- main content -->
   <div class="container">
     <h1>Restaurant Stuff</h1>
   </div>
@@ -51,5 +45,4 @@
   <p>&copy; Pick Your Pasta</p>
 </footer>
 </body>
->>>>>>> 74535e9e6cb76761011988ba42b205701bbded9c
 {% endblock %}

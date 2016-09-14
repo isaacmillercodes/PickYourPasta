@@ -1,13 +1,19 @@
 
 exports.seed = function(knex, Promise) {
   // Deletes ALL existing entries
-  return knex('table_name').del()
+  return knex('restaurants').del()
     .then(function () {
       return Promise.all([
         // Inserts seed entries
-        knex('table_name').insert({id: 1, colName: 'rowValue1'}),
-        knex('table_name').insert({id: 2, colName: 'rowValue2'}),
-        knex('table_name').insert({id: 3, colName: 'rowValue3'})
+        knex('restaurants').insert({
+          id: 1,
+          name: 'Deli Italiano',
+          city:'Great Falls',
+          state:'VA',
+          cuisine:'Italian',
+          description:'A quaint spot to get the best Italian',
+          img_url:'http://www.miasorellaristorante.com/wp-content/uploads/2016/01/Il-Portico-Italian-Restaurant_4ef42_lg.jpg'
+        })
       ]);
     });
 };

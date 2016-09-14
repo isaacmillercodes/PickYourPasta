@@ -1,21 +1,75 @@
+/*=====================
+homepage hero
+=====================*/
+
+.hero {
+  background-image: url(https://static.pexels.com/photos/6461/food-plate-rucola-salad.jpg);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  color: #E8F1F2;
+  display: flex;
+  flex-direction: row;
+  height: 88vh;
+  margin-top: -2.1rem;
+  border: none;
+  padding: 8rem;
+
+}
+
+.title {
+  align-self: center;
+  flex: 1;
+  text-align: center;
+  color: #FFF4E8;
+}
+.subtitle {
+  margin-top: -1rem;
+  font-size: 5rem;
+
+}
+
+.title-font{
+  font-family: 'Chewy', cursive;
+  font-size: 15rem;
+
+}
+
+/*=====================
+search bar
+=====================*/
+.search-bar {
+  background: #222222;
+  padding: 4vh;
+
+}
+
+/*=====================
+main nav bar
+=====================*/
+
 #nav {
   margin-left: 0px;
   margin-right: 0px;
   width: 100%;
 }
+
+/*=====================
+main footer
+=====================*/
+
 #footer {
   background-color: black;
   text-align: center;
   position:fixed;
   left:0px;
   bottom:0px;
-  height:30px;
+  height:8vh;
   width:100%;
 }
 footer p {
   font-family: Arial, sans-serif;
   font-size: 12px;
   margin-top: 2px;
-  color: white;
+  color: #FFF4E8;
   display: inline;
 }

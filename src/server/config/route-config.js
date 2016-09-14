@@ -10,11 +10,8 @@
     const userRoute = require('../routes/users');
     //route for restaurants.js
     const restaurantRoute = require('../routes/restaurants');
-<<<<<<< HEAD
-=======
     //route for reviews.js
     const reviewRoute = require('../routes/reviews');
->>>>>>> 89a665bcf6b7bb486da95f96c0c1731a4364d0fa
 
     // *** register routes *** //
     app.use('/', routes);

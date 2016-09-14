@@ -11,7 +11,6 @@
     //route for restaurants.js
     const restaurantRoute = require('../routes/restaurants');
 
-
     // *** register routes *** //
     app.use('/', routes);
     app.use('/users', userRoute);

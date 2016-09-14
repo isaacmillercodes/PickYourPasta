@@ -13,7 +13,7 @@ exports.seed = function(knex, Promise) {
           cuisine:'Italian',
           description:'A quaint spot to get the best Italian',
           img_url:'http://www.miasorellaristorante.com/wp-content/uploads/2016/01/Il-Portico-Italian-Restaurant_4ef42_lg.jpg'
-        }),
+        })
       ]);
     });
 };

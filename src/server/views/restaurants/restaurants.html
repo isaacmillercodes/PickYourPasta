@@ -20,7 +20,6 @@
     </div>
   </nav>
 
-
 <div class="restaurant_section">
   {% for restaurant in restaurants %}
     <div class="restaurant_tile">
@@ -30,7 +29,11 @@
             <div class="restaurant_city">{{restaurant.city}}</div>
             <div class="restaurant_state">{{restaurant.state}}</div>
           </div>
-        <div class="star_rating">{{restaurant.rating}}</div>
+          <div class="star_rating">
+            {% for num in range(0, 4) -%}
+            &#9733;
+            {%- endfor %}
+          </div>
         <div class="restarant_description">{{restaurant.description}}</div>
         <div class="cuisine">{{restaurant.cuisine}}</div>
     </div>

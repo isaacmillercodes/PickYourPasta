@@ -18,8 +18,8 @@ function createEmployee(knex) {
     last_name: faker.name.lastName(),
     title: assignTitle(arrayOfTitles),
     rest_id: faker.random.number({
-      'min': 1,
-      'max': 30
+      min: 1,
+      max: 30
     })
   });
 }

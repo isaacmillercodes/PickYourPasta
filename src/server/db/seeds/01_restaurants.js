@@ -10,10 +10,8 @@ exports.seed = function(knex, Promise) {
 
 //helper functions
 let cuisine = [
-  'Chinese',
   'Greek',
   'Indian',
-  'Creole',
   'Japanese',
   'Thai',
   'Italian',
@@ -31,11 +29,10 @@ function assignCuisine(arr) {
 function createRestaurantObject(knex) {
   return knex('restaurants')
   .insert({
-    name: "The " + faker.address.streetName() + " Restaurant",
+    name: 'The ' + faker.address.streetName() + ' Restaurant',
     city: faker.address.city(),
     state: faker.address.state(),
     cuisine: assignCuisine(cuisine),
-    description: faker.lorem.paragraph(),
-    image_url: faker.image.food()
+    description: faker.lorem.paragraph()
   });
 }

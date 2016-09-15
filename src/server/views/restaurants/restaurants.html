@@ -29,11 +29,6 @@
             <div class="restaurant_city">{{restaurant.city}}</div>
             <div class="restaurant_state">{{restaurant.state}}</div>
           </div>
-          <div class="star_rating">
-            {% for num in range(0, {{restaurant.rating}}) -%}
-            &#9733;
-            {%- endfor %}
-          </div>
         <div class="restarant_description">{{restaurant.description}}</div>
         <div class="cuisine">{{restaurant.cuisine}}</div>
     </div>

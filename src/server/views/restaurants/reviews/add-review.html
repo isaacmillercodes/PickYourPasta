@@ -20,11 +20,12 @@
     </div>
   </nav>
 <!-- main content -->
-<form class="form-horizontal">
+
+<form class="form-horizontal" method="POST" action="/restaurants/{{restaurant.id}}/reviews/{{user.id}}/new" id="addReviewForm">
   <div class="form-group">
     <label for="reviewText" class="col-sm-2 control-label">Your Review</label>
     <div class="col-sm-8">
-      <textarea class="form-control" id="reviewText" placeholder="Tell us about your experience at this restaurant" rows=4></textarea>
+      <textarea class="form-control" id="reviewText" name="reviewText" placeholder="Tell us about your experience at this restaurant" rows=4></textarea>
     </div>
   </div>
   <div class="form-group">
@@ -49,7 +50,7 @@
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
-      <button type="submit" class="btn btn-default">Submit Your Review</button>
+      <button type="submit" class="btn btn-default addReview">Submit Your Review</button>
     </div>
   </div>
 </form>

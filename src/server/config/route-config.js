@@ -17,7 +17,7 @@
     app.use('/', routes);
     app.use('/users', userRoute);
     app.use('/restaurants', restaurantRoute);
-    app.use('/restaurants/:restID/reviews', reviewRoute);
+    app.use('/restaurants/:restID/reviews/:userID', reviewRoute);
 
   };
 

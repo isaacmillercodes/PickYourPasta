@@ -31,7 +31,7 @@ function assignCuisine(arr) {
 function createRestaurantObject(knex) {
   return knex('restaurants')
   .insert({
-    name: "The " + faker.address.streetName() + " Restaurant",
+    name: 'The ' + faker.address.streetName() + ' Restaurant',
     city: faker.address.city(),
     state: faker.address.state(),
     cuisine: assignCuisine(cuisine),

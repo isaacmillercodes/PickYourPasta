@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', (req, res, next) => {
-  knex('restaurants').select()
+  knex('restaurants').select().orderBy('id','desc')
   .then((results) => {
     const renderObject = {};
     renderObject.restaurants = results;
@@ -17,13 +17,17 @@ router.get('/:id', (req,res,next) => {
   knex.select('*').from('restaurants').join('reviews', function () {
     this.on('reviews.rest_id', '=', 'restaurants.id').andOn('restaurants.id',id);
   })
-
   .then((results) => {
     const renderObject = {};
+    let restRating = 0;
     renderObject.restaurants = results[0];
     renderObject.reviews = results;
-    console.log('rating',results[0].rating);
-    // renderObject.reviews = results[1];
+    results.forEach((rate, i) => {
+      restRating += rate.rating;
+    });
+    var avgRate = parseFloat(restRating/(results.length));
+    renderObject.average = avgRate;
+    console.log(renderObject);
     res.render('restaurants/restaurant', renderObject);
   });
 

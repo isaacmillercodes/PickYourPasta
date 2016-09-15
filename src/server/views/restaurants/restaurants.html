@@ -19,20 +19,20 @@
       </div>
     </div>
   </nav>
-
-<div class="restaurant_section">
+  <header>
+    <h1>Displaying All <b>30</b> Restaurants</h1>
+  </header>
   {% for restaurant in restaurants %}
-    <div class="restaurant_tile">
-        <img class="picture_url" src="{{restaurant.image_url}}">
-        <div class="restaurant_name">{{restaurant.name}}</div>
-          <div>
-            <div class="restaurant_city">{{restaurant.city}}</div>
-            <div class="restaurant_state">{{restaurant.state}}</div>
-          </div>
-        <div class="restarant_description">{{restaurant.description}}</div>
-        <div class="cuisine">{{restaurant.cuisine}}</div>
+  <div class="restaurant_section col-sm-4">
+    <div class="box">
+      <div class="container-fluid">
+        <img class="rest-image" src="{{restaurant.image_url}}">
+        <h1 class="restaurant_name">{{restaurant.name}}</h1>
+        <h3>{{restaurant.city}}, {{restaurant.state}}</h3>
+        <p>{{restaurant.description}}</p>
+      </div>
     </div>
+  </div>
   {% endfor %}
-</div>
 
 {% endblock %}

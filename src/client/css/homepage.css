@@ -1,0 +1,43 @@
+header > h1 {
+  font-size: 32px;
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  padding: 20px;
+  font-style: italic;
+  text-align: center;
+}
+
+.restaurant-section {
+  margin: 10px;
+}
+
+.rest-image {
+  width: 370px;
+  vertical-align: bottom;
+  margin: 0 auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.restaurant-section, h1 {
+  font-family: 'Chewy', Arial, sans-serif;
+  font-size: 22px;
+}
+
+.restaurant-section, h3 {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-weight: bold;
+  font-size: 16px;
+  margin-top: -5px;
+}
+
+.restaurant-section, p {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+  font-size: 14px;
+  text-align: justify
+}
+
+@media only screen and (max-width : 767px) {
+  .box {
+    height: auto !important;
+  }
+}

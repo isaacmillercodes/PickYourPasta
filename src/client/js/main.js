@@ -6,10 +6,10 @@
         const answer = confirm('Are you sure?');
         if (answer) {
           const $this = $(this);
-          const personID = $this.attr('data-id');
+          const restaurantId = $this.attr('data-id');
           $.ajax({
             type: 'DELETE',
-            url: `/delete/${personID}`
+            url: `/delete/${restaurantId}`
           })
           .done((data) => {
             location.reload();

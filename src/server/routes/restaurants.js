@@ -31,12 +31,13 @@ router.get('/edit', (req, res, next) => {
 });
 
 router.delete('/delete/:id', (req,res,next) => {
-  const id = req.params.id;
-  knex('restaurants').where('id',id)
-  .returning('*')
+  const id = parseInt(req.params.id);
+  knex('restaurants')
   .del()
+  .where('id',id)
+  .returning('*')
   .then((results) => {
-    if(results.length) {
+    if (results.length) {
       res.status(200).json({
         status:'success',
         message: `${results[0].name} is gone!`
@@ -47,24 +48,6 @@ router.delete('/delete/:id', (req,res,next) => {
         message: 'this Id does not exist'
       });
     }
-  });
-});
-
-
-
-module.exports = router;
-
-if (results.length) {
-      res.status(200).json({
-        status: 'success',
-        message: `${results[0].username} is gone!`
-      });
-    } else {
-      res.status(404).json({
-        status: 'errror',
-        message: 'That id does not exist'
-      });
-    }
   })
   .catch((err) => {
     res.status(500).json({
@@ -73,3 +56,5 @@ if (results.length) {
     });
   });
 });
+
+module.exports = router;

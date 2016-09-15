@@ -2,7 +2,7 @@ exports.seed = function(knex, Promise) {
   return Promise.all([
     knex('restaurants')
     .update({
-      image_url: 'https://unsplash.com/search/photos/food?photo=KYBzqPuif5w'
+      image_url: 'https://hd.unsplash.com/photo-1471367029819-38078e88c3fb'
     })
     .where('cuisine', 'Thai'),
     knex('restaurants')

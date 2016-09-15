@@ -1,9 +1,10 @@
-header > h1 {
+header h1 {
   font-size: 32px;
   font-family: 'Roboto Slab', Arial, sans-serif;
   padding: 20px;
   font-style: italic;
   text-align: center;
+  color: inherit;
 }
 
 .restaurant-section {
@@ -18,9 +19,39 @@ header > h1 {
   border-radius: 5px;
 }
 
+.single-rest-image {
+  width: 400px;
+  align-content: left;
+  border-radius: 5px;
+}
+
 .restaurant-section, h1 {
   font-family: 'Chewy', Arial, sans-serif;
   font-size: 22px;
+  text-decoration: none;
+  color: #2D2D2D;
+}
+
+.restaurant-tile, h1 {
+  font-family: 'Chewy', Arial, sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  color: #2D2D2D;
+}
+
+.restaurant-tile, h1 {
+  font-family: 'Chewy', Arial, sans-serif;
+  font-size: 22px;
+  text-decoration: none;
+  color: #2D2D2D;
+}
+
+.single-review {
+  font-family: 'Roboto Slab', Arial, sans-serif;
+}
+
+.restaurant-section, h1:hover {
+  text-decoration: none;
 }
 
 .restaurant-section, h3 {

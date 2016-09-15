@@ -10,9 +10,9 @@ exports.up = function(knex, Promise) {
 };
 
 exports.down = function(knex, Promise) {
-<<<<<<< HEAD
+
   return knex.schema.dropTable('reviews');
-=======
+
   // return knex.schema.dropTable('reviews');
->>>>>>> restaurant_index
+
 };

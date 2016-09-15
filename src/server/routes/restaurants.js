@@ -7,15 +7,20 @@ router.get('/', (req, res, next) => {
   .then((results) => {
     const renderObject = {};
     renderObject.restaurants = results;
-    res.rener('restaurants',renderObject);
+    res.render('restaurants/restaurants',renderObject);
   });
 });
 
 router.get('/:id', (req,res,next) => {
-  id = req.params.id;
-  knex('restaurants').select()
-})
-
+  const id = parseInt(req.params.id);
+  knex('restaurants').where('id', id)
+  .then((results) => {
+    const renderObject = {};
+    renderObject.restaurants = results[0];
+    console.log('a',renderObject.restaurants);
+    res.render('restaurants/restaurant', renderObject);
+  });
+});
 
 router.get('/new', (req, res, next) => {
   res.render('restaurants/new');
@@ -25,5 +30,46 @@ router.get('/edit', (req, res, next) => {
   res.render('restaurants/restaurant-edit');
 });
 
+router.delete('/delete/:id', (req,res,next) => {
+  const id = req.params.id;
+  knex('restaurants').where('id',id)
+  .returning('*')
+  .del()
+  .then((results) => {
+    if(results.length) {
+      res.status(200).json({
+        status:'success',
+        message: `${results[0].name} is gone!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'error',
+        message: 'this Id does not exist'
+      });
+    }
+  });
+});
+
+
 
 module.exports = router;
+
+if (results.length) {
+      res.status(200).json({
+        status: 'success',
+        message: `${results[0].username} is gone!`
+      });
+    } else {
+      res.status(404).json({
+        status: 'errror',
+        message: 'That id does not exist'
+      });
+    }
+  })
+  .catch((err) => {
+    res.status(500).json({
+      status: 'errror',
+      message: 'Something bad happened!'
+    });
+  });
+});

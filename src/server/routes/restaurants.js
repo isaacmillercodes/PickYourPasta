@@ -13,13 +13,20 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req,res,next) => {
   const id = parseInt(req.params.id);
-  knex('restaurants').where('id', id)
+  // knex.from('restaurants').innerJoin('reviews', 'restaurants.id', 'reviews.rest_id').where('restaurant.id',id).andWhere('reviews.rest_id',id)
+  knex.select('*').from('restaurants').join('reviews', function () {
+    this.on('reviews.rest_id', '=', 'restaurants.id').andOn('restaurants.id',id);
+  })
+
   .then((results) => {
     const renderObject = {};
     renderObject.restaurants = results[0];
-    console.log('a',renderObject.restaurants);
+    renderObject.reviews = results;
+    console.log('rating',results[0].rating);
+    // renderObject.reviews = results[1];
     res.render('restaurants/restaurant', renderObject);
   });
+
 });
 
 router.get('/new', (req, res, next) => {
@@ -31,6 +38,7 @@ router.get('/edit', (req, res, next) => {
 });
 
 router.delete('/delete/:id', (req,res,next) => {
+  console.log('here');
   const id = parseInt(req.params.id);
   knex('restaurants')
   .del()

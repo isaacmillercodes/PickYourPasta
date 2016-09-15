@@ -9,7 +9,7 @@
           const restaurantId = $this.attr('data-id');
           $.ajax({
             type: 'DELETE',
-            url: `/delete/${restaurantId}`
+            url: `/restaurants/delete/${restaurantId}`
           })
           .done((data) => {
             location.reload();

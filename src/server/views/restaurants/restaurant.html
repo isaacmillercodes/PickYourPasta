@@ -30,24 +30,30 @@
         <span class="stars"></span>
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
-      <button class="restaurant_delete-btn" data-id="{{restaurants.id}}">X</button>
+      <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
   </div>
+  <h2 class="review_title">Reviews for {{restaurants.name}}</h2>
   <div class="review_pane">
     <div id="sumnumber_reviews"></div>
-  <div class="row col-md-6">
+  <div class="row col-md-9">
     {% for result in reviews %}
-    <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview">X</a>
+
     <div class="single_review">
-      <div class="stars_review">{{result.rating}}</div>
+      {% for i in range (0, result.rating)%}
+      <span>&starf;</span>
+      {% endfor %}
+      <br>
       <div class="user_review" >{{result.review}}</div>
-      <div class="user_review" >{{users.first_name}}</div>
         {% for user in users %}
           {% if user.id === result.user_id %}
-            <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
+            <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</b>
           {% endif %}
         {% endfor %}
-      <div class="date_review">{{result.created_at}}</div>
+      <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
+
+      <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
     </div>
+
     {% endfor %}
   </div>
 {% endblock %}

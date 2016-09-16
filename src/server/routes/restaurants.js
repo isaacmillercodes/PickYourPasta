@@ -30,8 +30,8 @@ router.get('/:id', (req,res,next) => {
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];
+    console.log(results[2][0]);
     res.render('restaurants/restaurant', renderObject);
-    console.log(results[1]);
   });
 });
 

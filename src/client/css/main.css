@@ -61,13 +61,10 @@ main footer
 =====================*/
 
 #footer {
-  background-color: black;
+  background-color: #222222;
   text-align: center;
-<<<<<<< HEAD
-  position:absolute;
-=======
+  
   clear: both;
->>>>>>> f22090cc1bd5ac8db0356eaa1d918f8406d52966
   left:0px;
   bottom:0px;
   height:8vh;

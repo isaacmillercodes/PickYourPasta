@@ -10,7 +10,11 @@
   const flash = require('connect-flash');
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
+<<<<<<< HEAD
+  const dateFilter = require('nunjucks-date-filter');
+=======
   // const passport = require('passport');
+>>>>>>> fe2183d337669af22c6262e9550334e755655530
 
   // *** view folders *** //
   const viewFolders = [
@@ -26,7 +30,8 @@
     nunjucks.configure(viewFolders, {
       express: app,
       autoescape: true
-    });
+    }).addFilter('date', dateFilter);
+
     app.set('view engine', 'html');
 
     // *** app middleware *** //

@@ -19,7 +19,11 @@
     "knex": "^0.11.10",
     "morgan": "~1.7.0",
     "nunjucks": "^2.4.2",
+<<<<<<< HEAD
+    "nunjucks-date-filter": "^0.1.1",
+=======
     "passport": "^0.3.2",
+>>>>>>> fe2183d337669af22c6262e9550334e755655530
     "passport-github2": "^0.1.10",
     "pg": "6.1.0"
   },

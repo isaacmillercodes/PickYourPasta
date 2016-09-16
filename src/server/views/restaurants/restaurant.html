@@ -38,7 +38,7 @@
     {% for result in reviews %}
     <div class="single_review">
       <div class="stars_review">{{result.rating}}</div>
-      <div class="date_review">{{result.created_at}}</div>
+      <div class="date_review">{{result.created_at|datetimeformat('%d-%m-%Y')}}</div>
       <div class="user_review">{{result.review}}</div>
     </div>
     {% endfor %}

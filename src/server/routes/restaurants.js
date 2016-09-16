@@ -25,7 +25,7 @@ router.get('/:id', (req,res,next) => {
     results.forEach((rate, i) => {
       restRating += rate.rating;
     });
-    var avgRate = parseFloat(restRating/(results.length));
+    var avgRate = parseFloat(restRating / (results.length));
     renderObject.average = avgRate;
     console.log(renderObject);
     res.render('restaurants/restaurant', renderObject);

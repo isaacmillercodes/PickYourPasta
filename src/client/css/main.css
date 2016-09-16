@@ -63,7 +63,7 @@ main footer
 #footer {
   background-color: black;
   text-align: center;
-  position:fixed;
+  position:absolute;
   left:0px;
   bottom:0px;
   height:8vh;

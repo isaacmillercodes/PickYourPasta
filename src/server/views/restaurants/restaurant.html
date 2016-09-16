@@ -1,25 +1,6 @@
 {% extends "_base.html" %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-<body>
-<!-- navigation -->
-  <nav class="navbar navbar-default" id="nav">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;&nbsp;Pick Your Pasta</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Home</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <div class="restaurant_tile">
     <div class="container-fluid">
       <div class="row col-md-6">
@@ -40,12 +21,13 @@
     <div class="single_review">
       <div class="stars_review">{{result.rating}}</div>
       <div class="user_review" >{{result.review}}</div>
-        {% for user in users %}
+          {% for user in users %}
           {% if user.id == result.user_id %}
             <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
           {% endif %}
         {% endfor %}
       <div class="date_review">{{result.created_at}}</div>
+      <div class="user_review">{{result.review}}</div>
     </div>
     {% endfor %}
   </div>

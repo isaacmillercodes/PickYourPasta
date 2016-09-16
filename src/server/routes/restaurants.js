@@ -16,7 +16,7 @@ router.get('/:id', (req,res,next) => {
   let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
   let findReviews = knex('reviews').where('reviews.rest_id', id);
   let findUsers =
-  knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name')
+  knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
 
   Promise.all([
     findRestaurant,
@@ -31,7 +31,7 @@ router.get('/:id', (req,res,next) => {
     renderObject.reviews = results[1];
     renderObject.users = results[2];
     res.render('restaurants/restaurant', renderObject);
-    console.log(results[1])
+    console.log(results[1]);
   });
 });
 

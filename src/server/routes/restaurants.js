@@ -28,18 +28,14 @@ router.get('/:id', (req,res,next) => {
     const renderObject = {};
     let restRating = 0;
     renderObject.restaurants = results[0];
-<<<<<<< HEAD
-    renderObject.reviews = results;
-    results.forEach((rate, i) => {
-      restRating += rate.rating;
-    });
-    var avgRate = parseFloat(restRating / (results.length));
-    renderObject.average = avgRate;
-    console.log(renderObject);
-=======
     renderObject.reviews = results[1];
     renderObject.users = results[2];
->>>>>>> master
+    // results.forEach((rate, i) => {
+    //   restRating += rate.rating;
+    // });
+    // var avgRate = parseFloat(restRating / (results.length));
+    // renderObject.average = avgRate;
+    console.log(renderObject);
     res.render('restaurants/restaurant', renderObject);
     console.log(results[1]);
   });

@@ -1,25 +1,6 @@
 {% extends "_base.html" %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-<body>
-<!-- navigation -->
-  <nav class="navbar navbar-default" id="nav">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;&nbsp;Pick Your Pasta</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Home</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <div class="restaurant_tile">
     <div class="container-fluid">
       <div class="row col-md-6">
@@ -30,16 +11,26 @@
         <span class="stars"></span>
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
-      <button class="restaurant_delete-btn" data-id="{{restaurants.id}}">X</button>
+      <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
   </div>
+  <h2 class="review_title">Reviews for {{restaurants.name}}</h2>
   <div class="review_pane">
     <div id="sumnumber_reviews"></div>
-  <div class="row col-md-6">
+  <div class="row col-md-9">
     {% for result in reviews %}
     <div class="single_review">
-      <div class="stars_review">{{result.rating}}</div>
-      <div class="date_review">{{result.created_at}}</div>
-      <div class="user_review">{{result.review}}</div>
+      {% for i in range (0, result.rating)%}
+      <span>&starf;</span>
+      {% endfor %}
+      <br>
+      <div class="user_review" >{{result.review}}</div>
+        {% for user in users %}
+          {% if user.id === result.user_id %}
+            <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</b>
+          {% endif %}
+        {% endfor %}
+      <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
+      <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
     </div>
     {% endfor %}
   </div>

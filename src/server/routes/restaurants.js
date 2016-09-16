@@ -35,9 +35,7 @@ router.get('/:id', (req,res,next) => {
     // });
     // var avgRate = parseFloat(restRating / (results.length));
     // renderObject.average = avgRate;
-    console.log(renderObject);
     res.render('restaurants/restaurant', renderObject);
-    console.log(results[1]);
   });
 });
 

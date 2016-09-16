@@ -1,0 +1,14 @@
+
+
+
+.review_pane {
+  height: 400px;
+  text-align: justify;
+  align-self: center;
+  overflow: scroll;
+  /*text-align: justify;*/
+}
+
+.btn {
+  border-radius: 5px;
+}

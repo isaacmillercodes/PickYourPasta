@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('cuisine').notNullable();
     table.text('description').notNullable();
     table.string('image_url');
+    table.integer('avg');
   });
 };
 

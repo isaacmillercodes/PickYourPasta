@@ -3,7 +3,7 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', (req, res, next) => {
-  knex('restaurants').select()
+  knex('restaurants').select().orderBy('id','desc')
   .then((results) => {
     const renderObject = {};
     renderObject.restaurants = results;
@@ -26,6 +26,7 @@ router.get('/:id', (req,res,next) => {
   .then((results) => {
 
     const renderObject = {};
+    let restRating = 0;
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];

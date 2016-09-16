@@ -23,12 +23,11 @@
   <div class="restaurant_tile">
       <div class="restaurant_name">{{restaurants.name}}</div>
       <img class="picture_url" src="{{restaurants.image_url}}">
-
       <div>
         <div class="restaurant_city">{{restaurants.city}}</div>
         <div class="restaurant_state">{{restaurants.state}}</div>
       </div>
-      <div class="star_rating">{{restaurants.rating}}</div>
+      <div class="star_rating">{{average}}</div>
       <div class="restarant_description">{{restaurants.description}}</div>
       <div class="cuisine">{{restaurants.cuisine}}</div>
       <button class="restaurant_delete-btn" data-id="{{restaurants.id}}">X</button>
@@ -46,7 +45,6 @@
               <div class="userName" data-userId={{user.id}}>{{user.first_name}} {{user.last_name}}</div>
           {% endif %}
         {% endfor %}
-
       <div class="date_review">{{result.created_at}}</div>
     </div>
     {% endfor %}

@@ -76,16 +76,16 @@ var dateFilter = require('nunjucks-date-filter');
     // const answer = confirm('Are you sure?');
     //
     // if (answer) {
-      $.ajax({
-        url: '/restaurants/' + restID + '/reviews/' + userID + '/delete',
-        type: 'DELETE',
-        success: function(result) {
-          window.location = result;
-        },
-        error: function(error) {
-          console.log(error);
-        }
-      });
+    $.ajax({
+      url: '/restaurants/' + restID + '/reviews/' + userID + '/delete',
+      type: 'DELETE',
+      success: function(result) {
+        window.location = result;
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
     // }
   });
 

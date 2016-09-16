@@ -22,22 +22,27 @@
     {% block css %}{% endblock %}
   </head>
   <body>
-      {% block content %}
-      <nav class="navbar navbar-default" id="nav">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;Pick Your Pasta</a>
-          </div>
-          <div class="collapse navbar-collapse">
-            <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Sign Up</a></li>
-              <li><a href="#">Log In</a></li>
-              <li><a href="#">Home</a></li>
-            </ul>
-          </div>
+    <nav class="navbar navbar-default" id="nav">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/restaurants"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;Pick Your Pasta</a>
         </div>
-      </nav>
-      {% endblock %}
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/users/signup">Sign Up</a></li>
+            <li><a href="/users/login">Log In</a></li>
+            <li><a href="/">Home</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    {% block content %}
+    {% endblock %}
+    <footer id="footer">
+      <p>&copy; Pick Your Pasta</p>
+    </footer>
+
+
     <script type="text/javascript" src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>

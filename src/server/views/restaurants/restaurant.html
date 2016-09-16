@@ -1,25 +1,6 @@
 {% extends "_base.html" %}
 
-{% block title %}{% endblock %}
-
 {% block content %}
-<body>
-<!-- navigation -->
-  <nav class="navbar navbar-default" id="nav">
-    <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-cutlery" aria-hidden="true"></span>&nbsp;&nbsp;Pick Your Pasta</a>
-      </div>
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="#">Sign Up</a></li>
-          <li><a href="#">Log In</a></li>
-          <li><a href="#">Home</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-
   <div class="restaurant_tile">
     <div class="container-fluid">
       <div class="row col-md-6">
@@ -44,6 +25,7 @@
       {% endfor %}
       <br>
       <div class="user_review" >{{result.review}}</div>
+<<<<<<< HEAD
         {% for user in users %}
           {% if user.id === result.user_id %}
             <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</b>
@@ -52,6 +34,15 @@
       <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
 
       <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
+=======
+          {% for user in users %}
+          {% if user.id == result.user_id %}
+            <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
+          {% endif %}
+        {% endfor %}
+      <div class="date_review">{{result.created_at}}</div>
+      <div class="user_review">{{result.review}}</div>
+>>>>>>> fe2183d337669af22c6262e9550334e755655530
     </div>
 
     {% endfor %}

@@ -10,7 +10,11 @@
   const flash = require('connect-flash');
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
+<<<<<<< HEAD
   const dateFilter = require('nunjucks-date-filter');
+=======
+  // const passport = require('passport');
+>>>>>>> fe2183d337669af22c6262e9550334e755655530
 
   // *** view folders *** //
   const viewFolders = [
@@ -37,7 +41,7 @@
     app.use(cookieParser());
     app.use(bodyParser.json());
     app.use(bodyParser.urlencoded({ extended: false }));
-    // // uncomment if using express-session
+    // uncomment if using express-session
     // app.use(session({
     //   secret: process.env.SECRET_KEY,
     //   resave: false,

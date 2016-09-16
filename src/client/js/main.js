@@ -68,12 +68,12 @@
   });
 
   $(document).on('click', '.deleteReview', function() {
-    const restID = ('.restaurant_delete-btn').data('id');
-    const userID = ('.userName').data('userId');
+    const restID = $('.restaurant_delete-btn').data('id');
+    const userID = $('.userName').data('userid');
 
-    const answer = confirm('Are you sure?');
-
-    if (answer) {
+    // const answer = confirm('Are you sure?');
+    //
+    // if (answer) {
       $.ajax({
         url: '/restaurants/' + restID + '/reviews/' + userID + '/delete',
         type: 'DELETE',
@@ -84,7 +84,7 @@
           console.log(error);
         }
       });
-    }
+    // }
   });
 
 })();

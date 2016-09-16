@@ -41,8 +41,9 @@
     <div class="single_review">
       <div class="stars_review">{{result.rating}}</div>
       <div class="user_review" >{{result.review}}</div>
+      <div class="user_review" >{{users.first_name}}</div>
         {% for user in users %}
-          {% if user.id == result.user_id %}
+          {% if user.id === result.user_id %}
             <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
           {% endif %}
         {% endfor %}

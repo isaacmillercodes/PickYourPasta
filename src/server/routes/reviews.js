@@ -72,7 +72,6 @@ router.get('/edit', (req, res, next) => {
 });
 
 router.put('/edit', (req, res, next) => {
-  console.log(req.body);
   const restID = parseInt(req.params.restID);
   const userID = parseInt(req.params.userID);
   const review = req.body.review;
@@ -90,6 +89,23 @@ router.put('/edit', (req, res, next) => {
   })
   .catch((error) => {
     console.log(error);
+  });
+});
+
+router.delete('/delete', (req, res, next) => {
+  const restID = parseInt(req.params.restID);
+  const userID = parseInt(req.params.userID);
+
+  knex('reviews').where({
+    rest_id: restID,
+    user_id:  userID
+  })
+  .del()
+  .then((result) => {
+    res.send('/restaurants/' + restID);
+  })
+  .catch((err) => {
+    return next(err);
   });
 });
 

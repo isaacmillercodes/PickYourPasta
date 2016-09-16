@@ -36,10 +36,21 @@
     <div id="sumnumber_reviews"></div>
   <div class="row col-md-6">
     {% for result in reviews %}
+    <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview">X</a>
     <div class="single_review">
       <div class="stars_review">{{result.rating}}</div>
+<<<<<<< HEAD
       <div class="date_review">{{result.created_at|datetimeformat('%d-%m-%Y')}}</div>
       <div class="user_review">{{result.review}}</div>
+=======
+      <div class="user_review" >{{result.review}}</div>
+        {% for user in users %}
+          {% if user.id == result.user_id %}
+            <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
+          {% endif %}
+        {% endfor %}
+      <div class="date_review">{{result.created_at}}</div>
+>>>>>>> master
     </div>
     {% endfor %}
   </div>

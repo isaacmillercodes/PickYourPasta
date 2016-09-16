@@ -25,7 +25,6 @@
       {% endfor %}
       <br>
       <div class="user_review" >{{result.review}}</div>
-<<<<<<< HEAD
         {% for user in users %}
           {% if user.id === result.user_id %}
             <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</b>
@@ -34,15 +33,6 @@
       <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
 
       <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
-=======
-          {% for user in users %}
-          {% if user.id == result.user_id %}
-            <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
-          {% endif %}
-        {% endfor %}
-      <div class="date_review">{{result.created_at}}</div>
-      <div class="user_review">{{result.review}}</div>
->>>>>>> fe2183d337669af22c6262e9550334e755655530
     </div>
 
     {% endfor %}

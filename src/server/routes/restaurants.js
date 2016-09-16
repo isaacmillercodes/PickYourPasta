@@ -13,24 +13,26 @@ router.get('/', (req, res, next) => {
 
 router.get('/:id', (req,res,next) => {
   const id = parseInt(req.params.id);
-  // knex.from('restaurants').innerJoin('reviews', 'restaurants.id', 'reviews.rest_id').where('restaurant.id',id).andWhere('reviews.rest_id',id)
-  knex.select('*').from('restaurants').join('reviews', function () {
-    this.on('reviews.rest_id', '=', 'restaurants.id').andOn('restaurants.id',id);
-  })
+  let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
+  let findReviews = knex('reviews').where('reviews.rest_id', id);
+  let findUsers =
+  knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name')
+
+  Promise.all([
+    findRestaurant,
+    findReviews,
+    findUsers
+  ])
   .then((results) => {
+
     const renderObject = {};
     let restRating = 0;
     renderObject.restaurants = results[0];
-    renderObject.reviews = results;
-    results.forEach((rate, i) => {
-      restRating += rate.rating;
-    });
-    var avgRate = parseFloat(restRating/(results.length));
-    renderObject.average = avgRate;
-    console.log(renderObject);
+    renderObject.reviews = results[1];
+    renderObject.users = results[2];
     res.render('restaurants/restaurant', renderObject);
+    console.log(results[1])
   });
-
 });
 
 router.get('/new', (req, res, next) => {

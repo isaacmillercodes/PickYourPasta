@@ -21,6 +21,7 @@
   </nav>
 
   <div class="restaurant_tile">
+<<<<<<< HEAD
     <div class="container-fluid">
       <div class="row col-md-6">
       <img class="single-rest-image" src="{{restaurants.image_url}}">
@@ -36,8 +37,15 @@
     <div id="sumnumber_reviews"></div>
   <div class="row col-md-6">
     {% for result in reviews %}
+    <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview">X</a>
     <div class="single_review">
       <div class="stars_review">{{result.rating}}</div>
+      <div class="user_review" >{{result.review}}</div>
+        {% for user in users %}
+          {% if user.id == result.user_id %}
+            <div class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</div>
+          {% endif %}
+        {% endfor %}
       <div class="date_review">{{result.created_at}}</div>
       <div class="user_review">{{result.review}}</div>
     </div>

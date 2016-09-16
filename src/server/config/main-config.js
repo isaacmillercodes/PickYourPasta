@@ -10,7 +10,7 @@
   const flash = require('connect-flash');
   const morgan = require('morgan');
   const nunjucks = require('nunjucks');
-  const passport = require('passport');
+  // const passport = require('passport');
 
   // *** view folders *** //
   const viewFolders = [

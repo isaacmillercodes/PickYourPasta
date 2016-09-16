@@ -1,5 +1,5 @@
 const faker = require('faker');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 exports.seed = function(knex, Promise) {
   let numberOfArrays = new Array(50);
@@ -11,11 +11,12 @@ exports.seed = function(knex, Promise) {
 
 //helper function
 function createUser(knex) {
+  let salt = bcrypt.genSaltSync(10);
   return knex('users')
   .insert({
     first_name: faker.name.firstName(),
     last_name: faker.name.lastName(),
     email: faker.internet.email(),
-    password: faker.internet.password()
+    password: bcrypt.hashSync(faker.internet.password(), salt)
   });
 }

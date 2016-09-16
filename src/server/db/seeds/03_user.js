@@ -1,4 +1,5 @@
 const faker = require('faker');
+const bcrypt = require('bcrypt');
 
 exports.seed = function(knex, Promise) {
   let numberOfArrays = new Array(50);

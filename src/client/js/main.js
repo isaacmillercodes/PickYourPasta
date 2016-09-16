@@ -1,6 +1,6 @@
 (function () {
-  
-var dateFilter = require('nunjucks-date-filter');
+
+  var dateFilter = require('nunjucks-date-filter');
 
   console.log('sanity check!');
 

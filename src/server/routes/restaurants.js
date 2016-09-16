@@ -30,11 +30,11 @@ router.get('/:id', (req,res,next) => {
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];
-<<<<<<< HEAD
-    console.log(results[2][0]);
-=======
-    console.log(renderObject.reviews)
->>>>>>> fe2183d337669af22c6262e9550334e755655530
+    // results.forEach((rate, i) => {
+    //   restRating += rate.rating;
+    // });
+    // var avgRate = parseFloat(restRating / (results.length));
+    // renderObject.average = avgRate;
     res.render('restaurants/restaurant', renderObject);
   });
 });

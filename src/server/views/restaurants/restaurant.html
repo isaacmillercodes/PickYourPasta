@@ -21,26 +21,26 @@
   </nav>
 
   <div class="restaurant_tile">
-      <img class="picture_url" src="{{restaurants.image_url}}">
-      <div class="restaurant_name">{{restaurants.name}}</div>
-      <div>
-        <div class="restaurant_city">{{restaurants.city}}</div>
-        <div class="restaurant_state">{{restaurants.state}}</div>
-      </div>
-      <div class="star_rating">{{average}}</div>
-      <div class="restarant_description">{{restaurants.description}}</div>
-      <div class="cuisine">{{restaurants.cuisine}}</div>
+    <div class="container-fluid">
+      <div class="row col-md-6">
+      <img class="single-rest-image" src="{{restaurants.image_url}}">
+      <h1>{{restaurants.name}}</h1>
+      <h3>{{restaurants.city}}, {{restaurants.state}}</h3>
+      <div class="star-rating" data-rating="{{average}}">{{average}}</div>
+        <span class="stars"></span>
+        <div class="restarant_description">{{restaurants.description}}</div>
+        <div class="cuisine">{{restaurants.cuisine}}</div>
       <button class="restaurant_delete-btn" data-id="{{restaurants.id}}">X</button>
   </div>
   <div class="review_pane">
     <div id="sumnumber_reviews"></div>
+  <div class="row col-md-6">
     {% for result in reviews %}
     <div class="single_review">
-      <div class="user_review">{{result.review}}</div>
       <div class="stars_review">{{result.rating}}</div>
       <div class="date_review">{{result.created_at}}</div>
+      <div class="user_review">{{result.review}}</div>
     </div>
     {% endfor %}
   </div>
-
 {% endblock %}

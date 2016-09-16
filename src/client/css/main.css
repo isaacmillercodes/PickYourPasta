@@ -13,7 +13,6 @@ homepage hero
   margin-top: -2.1rem;
   border: none;
   padding: 8rem;
-
 }
 
 .title {
@@ -51,6 +50,10 @@ main nav bar
   margin-left: 0px;
   margin-right: 0px;
   width: 100%;
+}
+.navbar-brand {
+  padding-left: 70px;
+  font-size: 25px;
 }
 
 /*=====================

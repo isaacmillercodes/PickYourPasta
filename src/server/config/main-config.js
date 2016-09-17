@@ -12,9 +12,6 @@
   const nunjucks = require('nunjucks');
   const dateFilter = require('nunjucks-date-filter');
 
-  // const passport = require('passport');
-
-
   // *** view folders *** //
   const viewFolders = [
     path.join(__dirname, '..', 'views')

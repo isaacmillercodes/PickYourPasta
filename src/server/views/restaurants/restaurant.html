@@ -18,7 +18,6 @@
     <div id="sumnumber_reviews"></div>
   <div class="row col-md-9">
     {% for result in reviews %}
-
     <div class="single_review">
       {% for i in range (0, result.rating)%}
       <span>&starf;</span>
@@ -31,10 +30,8 @@
           {% endif %}
         {% endfor %}
       <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
-
       <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
     </div>
-
     {% endfor %}
   </div>
 {% endblock %}

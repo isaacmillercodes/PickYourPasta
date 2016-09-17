@@ -3,10 +3,18 @@ const router = express.Router();
 const knex = require('../db/knex');
 
 router.get('/', (req, res, next) => {
-  knex('restaurants').select().orderBy('id','desc')
+  let getRest = knex('restaurants').select().orderBy('id','desc');
+  let findAve = knex.raw('select restaurants.id , avg(reviews.rating) from restaurants , reviews where restaurants.id = reviews.rest_id group by restaurants.id;');
+  Promise.all([
+    findAve,
+    getRest
+  ])
   .then((results) => {
     const renderObject = {};
-    renderObject.restaurants = results;
+    renderObject.restaurants = results[1];
+    renderObject.averages = results[0].rows;
+    console.log('single',results[0].rows[0].id);
+
     res.render('restaurants/restaurants',renderObject);
   });
 });
@@ -15,9 +23,7 @@ router.get('/:id', (req,res,next) => {
   const id = parseInt(req.params.id);
   let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
   let findReviews = knex('reviews').where('reviews.rest_id', id);
-  let findUsers =
-  knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
-
+  let findUsers = knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
   Promise.all([
     findRestaurant,
     findReviews,
@@ -35,6 +41,7 @@ router.get('/:id', (req,res,next) => {
     // });
     // var avgRate = parseFloat(restRating / (results.length));
     // renderObject.average = avgRate;
+
     res.render('restaurants/restaurant', renderObject);
   });
 });

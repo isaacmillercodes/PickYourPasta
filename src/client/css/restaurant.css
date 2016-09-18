@@ -1,14 +1,26 @@
-
-
-
 .review_pane {
-  height: 400px;
+  height: 450px;
   text-align: justify;
   align-self: center;
   overflow: scroll;
-  /*text-align: justify;*/
+  margin-bottom: 50px;
 }
 
 .btn {
   border-radius: 5px;
+  margin-top: 10px;
+}
+
+.review_title {
+  text-align: center;
+}
+
+.new-review, h4 {
+  text-align: center;
+  padding-bottom: 10px;
+  border-bottom: 2px dotted black;
+}
+
+h4 > .new-review:not(:first-child) {
+  display: none;
 }

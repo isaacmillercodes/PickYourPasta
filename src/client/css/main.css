@@ -39,7 +39,6 @@ search bar
 .search-bar {
   background: #222222;
   padding: 4vh;
-
 }
 
 /*=====================
@@ -63,7 +62,6 @@ main footer
 #footer {
   background-color: #222222;
   text-align: center;
-  
   clear: both;
   left:0px;
   bottom:0px;

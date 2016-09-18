@@ -13,6 +13,11 @@
     //route for reviews.js
     const reviewRoute = require('../routes/reviews');
 
+    app.use((req, res, next) => {
+      if (req.session) app.locals.currentUser = req.session.user;
+      next();
+    })
+
     // *** register routes *** //
     app.use('/', routes);
     app.use('/users', userRoute);

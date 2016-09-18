@@ -5,7 +5,7 @@
 {% block content %}
 <body>
   <header>
-    <h1>Displaying All <b>30</b> Restaurants</h1>
+    <h1>Displaying All <b>{{restaurants.length}}</b> Restaurants</h1>
   </header>
   {% for restaurant in restaurants %}
   <div data-id={{restaurant.id}} class="restaurant_section col-sm-4">

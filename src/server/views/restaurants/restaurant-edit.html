@@ -5,17 +5,18 @@
 {% block content %}
 <body>
 <!-- main content -->
+  <input type="hidden" name="restaurantId" class=" hiddenRestId" value= {{ restaurant.id }} >
 <form class="form-horizontal">
   <div class="form-group">
     <label for="restName" class="col-sm-2 control-label">Restaurant Name</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="restName" placeholder="Enter Your Restaurant's Name">
+      <input type="text" class="form-control" id="restName"  value= "{{ restaurant.name }}"  placeholder="Enter Your Restaurant's Name">
     </div>
   </div>
   <div class="form-group">
     <label for="city" class="col-sm-2 control-label">City</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="city" placeholder="City">
+      <input type="text" class="form-control" id="city" placeholder="City" value= "{{ restaurant.city }}">
     </div>
   </div>
   <div class="form-group">
@@ -81,30 +82,26 @@
   <div class="form-group">
     <label for="cuisine" class="col-sm-2 control-label">Cuisine</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="cuisine" placeholder="Enter a type of cuisine">
+      <input type="text" class="form-control" id="cuisine" value="{{ restaurant.cuisine }}" placeholder="Enter a type of cuisine">
     </div>
   </div>
   <div class="form-group">
     <label for="description" class="col-sm-2 control-label">Description</label>
     <div class="col-sm-8">
-      <textarea class="form-control" id="description" placeholder="Tell us about your restaurant" rows=4></textarea>
+      <textarea class="form-control" id="description" placeholder="Tell us about your restaurant" rows=4>{{ restaurant.description }}</textarea>
     </div>
   </div>
   <div class="form-group">
-    <label for="imageUrl" class="col-sm-2 control-label">Image</label>
+    <label for="imageUrl" class="col-sm-2 control-label" >Image</label>
     <div class="col-sm-8">
-      <input type="text" class="form-control" id="imageUrl" placeholder="Enter a valid image URL">
+      <input type="text" class="form-control" id="imageUrl" value="{{ restaurant.image_url }}" placeholder="Enter a valid image URL">
     </div>
   </div>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
-      <button type="submit" class="btn btn-default">Add Restaurant</button>
+      <button type="button" class="btn btn-default editRestaurant">Save Changes</button>
     </div>
   </div>
 </form>
-<!-- footer -->
-<footer id="footer">
-  <p>&copy; Pick Your Pasta</p>
-</footer>
 </body>
 {% endblock %}

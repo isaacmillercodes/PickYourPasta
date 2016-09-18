@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/homepage.css">
     <link rel="stylesheet" href="/css/restaurant.css">
-
->>>>>>> 16ec442d476dfc389e5ff73f6996c3c848f0f92e
     {% block css %}{% endblock %}
   </head>
   <body>
@@ -30,8 +28,10 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
+            {% if currentUser.length === 0 %}
             <li><a href="/users/signup">Sign Up</a></li>
             <li><a href="/users/login">Log In</a></li>
+            {% endif %}
             <li><a href="/">Home</a></li>
           </ul>
         </div>
@@ -49,9 +49,6 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.matchHeight/0.7.0/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="/js/main.js"></script>
     <script type="text/javascript" src="/js/homepage.js"></script>
-<<<<<<< HEAD
     {% block scripts %}{% endblock %}
-=======
->>>>>>> 16ec442d476dfc389e5ff73f6996c3c848f0f92e
   </body>
 </html>

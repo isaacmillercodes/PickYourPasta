@@ -38,31 +38,32 @@ router.post('/login', (req, res, next) => {
   let password = req.body.password;
   let msg;
   if (!userEmail || !password) {
-    msg = { message: 'Must enter both username and password' };
+    let results = {};
+    results.message = 'Must enter both username and password';
+    res.render('users/login', results);
   } else {
     knex('users')
     .then((users) => {
       let user = users.filter((user) => user.email === userEmail)[0];
-      console.log(user);
       if (!user) {
-        msg = { message: 'Incorrect username or password.'};
+        let results = {};
+        results.message = 'Incorrect username or password.';
+        res.render('users/login', results);
       } else {
         if (bcrypt.compareSync(password, user.password)) {
           req.session.user = user;
-          msg = user;
+          res.redirect('/restaurants');
         } else {
-          msg = { message: 'Nope, something went wrong.' };
+          let results = {};
+          results.message = 'Incorrect username or password.';
+          res.render('users/login', results);
         }
       }
     })
     .catch((err) => {
       console.log(err);
-      // res.status(418).send(err);
     });
   }
-  let result = JSON.stringify(msg);
-  console.log(result);
-  res.render('restaurants/restaurants', result);
 });
 
 module.exports = router;

@@ -10,6 +10,13 @@
       <h1>Log Into Your Account</h1>
       <hr>
     </div>
+    {% if message %}
+    <div class="row">
+      <ul>
+        <li>{{message}}</li>
+      </ul>
+    </div>
+    {% endif %}
     <div class="row">
       <form action="/users/login" method="post">
         <div class="form-group">

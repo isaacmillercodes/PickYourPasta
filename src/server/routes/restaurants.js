@@ -30,18 +30,19 @@ router.get('/:id', (req,res,next) => {
     findUsers
   ])
   .then((results) => {
-
     const renderObject = {};
     let restRating = 0;
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];
-    // results.forEach((rate, i) => {
-    //   restRating += rate.rating;
-    // });
-    // var avgRate = parseFloat(restRating / (results.length));
-    // renderObject.average = avgRate;
-
+    renderObject.alreadyReviewed = false;
+    if (req.session.user) {
+      results[2].forEach(user => {
+        if (user.id === req.session.user.id) {
+          renderObject.alreadyReviewed = true;
+        }
+      });
+    }
     res.render('restaurants/restaurant', renderObject);
   });
 });
@@ -50,7 +51,8 @@ router.get('/new', (req, res, next) => {
   res.render('restaurants/new');
 });
 
-router.get('/edit', (req, res, next) => {
+router.get('/:id/edit', (req, res, next) => {
+  const id = parseInt(req.params.id);
   res.render('restaurants/restaurant-edit');
 });
 

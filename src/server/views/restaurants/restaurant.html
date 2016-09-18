@@ -1,6 +1,7 @@
 {% extends "_base.html" %}
 
 {% block content %}
+  <!-- restaurant pane -->
   <div class="restaurant_tile">
     <div class="container-fluid">
       <div class="row col-md-6">
@@ -13,25 +14,34 @@
         <div class="cuisine">{{restaurants.cuisine}}</div>
       <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
   </div>
-  <h2 class="review_title">Reviews for {{restaurants.name}}</h2>
+  <!-- reviews pane -->
+  <div class="col-md-6"</div>
+  <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
+  {% for result in reviews %}
+  <h4 class="new-review"><a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/new">Add New Review</a></h4>
+  {% endfor %}
   <div class="review_pane">
     <div id="sumnumber_reviews"></div>
-  <div class="row col-md-9">
+    <div class="review-column">
     {% for result in reviews %}
     <div class="single_review">
       {% for i in range (0, result.rating)%}
-      <span>&starf;</span>
+      <span><i class="fa fa-star" aria-hidden="true"></i></span>
       {% endfor %}
       <br>
-      <div class="user_review" >{{result.review}}</div>
         {% for user in users %}
           {% if user.id === result.user_id %}
-            <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name}}</b>
+            <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name.substring(0, 1) + "."}}</b>
           {% endif %}
         {% endfor %}
-      <div class="date_review">{{result.created_at|date("MM/DD/YYYY")}}</div>
+      <div class="date_review">{{result.created_at|date("MMM DD, YYYY")}}</div>
+      <div class="user_review" >{{result.review}}</div>
+      <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
       <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
+      <hr>
     </div>
     {% endfor %}
   </div>
+</div>
+</div>
 {% endblock %}

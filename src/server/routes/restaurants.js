@@ -71,8 +71,8 @@ router.put('/:id/edit', (req, res, next) => {
   const imageUrl = req.body.imageUrl;
   console.log('hello');
   knex('restaurants')
-  .where('restaurant.id', restId)
-  .insert({
+  .where('restaurants.id', restId)
+  .update({
     name: name,
     city: city,
     state: state,
@@ -81,7 +81,7 @@ router.put('/:id/edit', (req, res, next) => {
     image_url: imageUrl
   })
   .then(restaurant => {
-    res.redirect('/restaurants/' + restId);
+    res.send('/restaurants/' + restId);
   })
   .catch(error => {
     console.log(error);

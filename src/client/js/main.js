@@ -87,15 +87,15 @@
     // }
   });
 
-  $('.editRestaurant').on('submit', e => {
+  $('.editRestaurant').on('click', e => {
     e.preventDefault();
     console.log('something');
-    const restID = $('.hiddenRestId').val();
+    const restID = parseInt($('.hiddenRestId').val());
     const name = $('#restName').val();
     const city = $('#city').val();
     const state = $('#state').val();
     const cuisine = $('#cuisine').val();
-    const description = $('#description').val();
+    const description = $('#description').text();
     const imageUrl = $('#imageUrl').val();
 
     const updatedRestaurant = {
@@ -108,7 +108,7 @@
     };
 
     $.ajax({
-      url: '/restaurants/' + parseInt(restID) + '/edit',
+      url: '/restaurants/' + restID + '/edit',
       type: 'PUT',
       data: JSON.stringify(updatedRestaurant),
       contentType: 'application/json',
@@ -119,7 +119,6 @@
         console.log(error);
       }
     });
-
   });
 
 })();

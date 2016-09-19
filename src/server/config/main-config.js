@@ -31,7 +31,7 @@
     app.set('view engine', 'html');
 
     // *** app middleware *** //
-    if (process.env.NODE_ENV !== 'test') {
+    if (process.env.HEROKU_URL !== 'test') {
       app.use(morgan('dev'));
     }
     app.use(cookieParser());

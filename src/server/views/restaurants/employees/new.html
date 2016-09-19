@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+<body>
+<!-- main content -->
+
+<form class="form-horizontal" method="POST" action="/restaurants/{{restaurant.id}}/employees/{{user.id}}/new" id="addEmployeeForm">
+  <div class="form-group">
+    <label for="firstName" class="col-sm-2 control-label">First Name</label>
+    <input type='text'>
+    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
+    <input type='text'>
+    <label for="title" class="col-sm-2 control-label">Title</label>
+    <input type='text'>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-8">
+      <button type="submit" class="btn btn-default addReview">Submit New Employee</button>
+    </div>
+  </div>
+</form>
+</body>
+{% endblock %}

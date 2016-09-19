@@ -22,7 +22,7 @@ router.get('/:id', (req,res,next) => {
   let findRestaurant = knex('restaurants').where('restaurants.id', id).first();
   let findReviews = knex('reviews').where('reviews.rest_id', id);
   let findUsers = knex('reviews').where('reviews.rest_id', id).join('users', 'users.id', 'reviews.user_id').select('users.id', 'users.first_name', 'users.last_name');
-  let getEmployees = knex('employees').where('employees.rest_id',id)
+  let getEmployees = knex('employees').where('employees.rest_id',id);
   Promise.all([
     findRestaurant,
     findReviews,

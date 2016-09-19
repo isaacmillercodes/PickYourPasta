@@ -6,17 +6,16 @@
     const answer = confirm('Are you sure?');
     if (answer) {
       const $this = $(this);
-      const restaurantId = $this.attr('data-id');
+      const restaurantId = parseInt($this.data('id'));
       $.ajax({
         type: 'DELETE',
-        url: `/delete/${restaurantId}`
-      })
-      .done((data) => {
-        location.reload();
-        console.log(data);
-      })
-      .fail((err) => {
-        console.log(err);
+        url: '/restaurants/delete/' + restaurantId,
+        success: function(result) {
+          window.location = result;
+        },
+        error: function(error) {
+          console.log(error);
+        }
       });
     }
   });
@@ -68,23 +67,23 @@
   });
 
   $(document).on('click', '.deleteReview', function() {
-    const restID = $('.restaurant_delete-btn').data('id');
-    const userID = $('.userName').data('userid');
+    const restID = $('.deleteReview').data('id');
+    const userID = $('.deleteReview').data('userid');
 
-    // const answer = confirm('Are you sure?');
-    //
-    // if (answer) {
-    $.ajax({
-      url: '/restaurants/' + restID + '/reviews/' + userID + '/delete',
-      type: 'DELETE',
-      success: function(result) {
-        window.location = result;
-      },
-      error: function(error) {
-        console.log(error);
-      }
-    });
-    // }
+    const answer = confirm('Are you sure?');
+
+    if (answer) {
+      $.ajax({
+        url: '/restaurants/' + restID + '/reviews/' + userID + '/delete',
+        type: 'DELETE',
+        success: function(result) {
+          window.location = result;
+        },
+        error: function(error) {
+          console.log(error);
+        }
+      });
+    }
   });
 
   $('.editRestaurant').on('click', e => {

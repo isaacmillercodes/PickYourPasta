@@ -12,6 +12,7 @@
         <span class="stars"></span>
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
+{% if currentUser.is_admin == true %}
         <table class="table">
           <thead class="thead-inverse">
           <tr>
@@ -31,12 +32,9 @@
                   <td><button class="btn-small btn-danger" data-id='{{employee.id}}' id='employee_delete'>Delete</button></td>
                   <td><button class="btn-small btn-primary" data-id='{{employee.id}}' id='employee_edit'>Edit</button></td>
               </tr>
-
-
             {% endif %}
           {% endfor %}
         </table>
-      {% if currentUser.is_admin === true %}
       <a href="/restaurants/{{restaurants.id}}/edit" class="btn-primary btn">Edit Restaurant</a>
       <button
         <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
@@ -45,7 +43,7 @@
   <!-- reviews pane -->
   <div class="review-block col-md-6"</div>
   <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
-  {% if currentUser.is_admin === false and alreadyReviewed === false %}
+  {% if currentUser.is_admin == false and alreadyReviewed == false %}
     <h4 class="new-review"><a href="/restaurants/{{restaurants.id}}/reviews/{{currentUser.id}}/new">Add New Review</a></h4>
   {% endif %}
   <div class="review_pane">
@@ -66,7 +64,7 @@
       <div class="user_review" >{{result.review}}</div>
       {% if currentUser.id === result.user_id and currentUser.is_admin === false %}
         <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
-        <button href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete Review</button>
+        <button href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm" data-id="{{result.rest_id}}" data-userid="{{result.user_id}}">Delete Review</button>
       {% endif %}
       <hr>
     </div>

@@ -25,7 +25,7 @@
     app.use('/users', userRoute);
     app.use('/restaurants', restaurantRoute);
     app.use('/restaurants/:restID/reviews/:userID', reviewRoute);
-    app.use('/employee', employeeRoute);
+    app.use('/restaurants/:restID/employees/:empID', employeeRoute);
 
   };
 

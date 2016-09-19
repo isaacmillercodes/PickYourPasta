@@ -18,7 +18,7 @@ $(document).on('click', '#employee_delete', function() {
 
 
 $(document).on('click', '#employee_edit', function() {
-  window.location.replace('./employees/edit' + this.id);
+  window.location.replace('./employees/edit/' + this.id);
 
 
 });

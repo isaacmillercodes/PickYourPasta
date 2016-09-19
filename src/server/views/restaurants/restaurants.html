@@ -10,23 +10,20 @@
   {% for restaurant in restaurants %}
   <div data-id={{restaurant.id}} class="restaurant_section col-sm-4">
     <div class="box">
-      <div>{{restaurant.id}}</div>
-
       <div class="container-fluid">
         <a href="/restaurants/{{restaurant.id}}">
           <img class="rest-image" src="{{restaurant.image_url}}">
           <h1 class="restaurant_name">{{restaurant.name}}</h1>
         </a>
         <h3>{{restaurant.city}}, {{restaurant.state}}</h3>
-        <p>{{restaurant.description}}</p>
         {% for average in averages %}
           {% if average.id == restaurant.id %}
             {% for i in range (0, average.avg) %}
               <span>&starf;</span>
               {% endfor%}
           {% endif %}
-
         {% endfor %}
+        <p>{{restaurant.description}}</p>
       </div>
     </div>
   </div>

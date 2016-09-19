@@ -2,27 +2,22 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 
-router.put('/:id/edit', (req, res, next) => {
-  const restId = parseInt(req.params.id);
-  const name = req.body.name;
-  const city = req.body.city;
-  const state = req.body.state;
-  const cuisine = req.body.cuisine;
-  const description = req.body.description;
-  const imageUrl = req.body.imageUrl;
+router.put('employees/:id/edit', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  const first_name = req.body.first_name;
+  const last_name = req.body.last_name;
+  const title = req.body.title;
   console.log('hello');
-  knex('restaurants')
-  .where('restaurants.id', restId)
+  knex('employees')
+  .where('id', id)
   .update({
-    name: name,
-    city: city,
-    state: state,
-    cuisine: cuisine,
-    description: description,
-    image_url: imageUrl
+    first_name : first_name,
+    last_name : last_name,
+    title : title
+
   })
   .then(restaurant => {
-    res.send('/restaurants/' + restId);
+    res.send('/restaurants/' + id);
   })
   .catch(error => {
     console.log(error);
@@ -30,17 +25,17 @@ router.put('/:id/edit', (req, res, next) => {
 
 });
 
-router.delete('/delete/:id', (req,res,next) => {
+router.delete('employees/delete/:id', (req,res,next) => {
   console.log('here');
-  const restID = parseInt(req.params.id);
+  const empId = parseInt(req.params.id);
 
-  let deleteEmployee = knex('reviews').where('rest_id', restID).del();
+  let deleteEmployee = knex('employees').where('id', empId).del();
   Promise.all([
     deleteEmployee
   ])
   .then((result) => {
     console.log('we did it');
-    res.send('/restaurants');
+    res.render('/restaurants');
   })
   .catch((err) => {
     console.log('we didn\'t do it');
@@ -48,3 +43,5 @@ router.delete('/delete/:id', (req,res,next) => {
 
   });
 });
+
+module.exports = router;

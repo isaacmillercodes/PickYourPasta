@@ -12,6 +12,8 @@
     const restaurantRoute = require('../routes/restaurants');
     //route for reviews.js
     const reviewRoute = require('../routes/reviews');
+    //route for employees.js
+    const employeeRoute = require('../routes/employees');
 
     app.use((req, res, next) => {
       if (req.session) app.locals.currentUser = req.session.user;
@@ -23,6 +25,7 @@
     app.use('/users', userRoute);
     app.use('/restaurants', restaurantRoute);
     app.use('/restaurants/:restID/reviews/:userID', reviewRoute);
+    app.use('/employee', employeeRoute);
 
   };
 

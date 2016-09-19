@@ -2,6 +2,17 @@
 
 Pick Your Pasta is a restaurant directory website where users can find restaurants and add reviews for restaurants they've visited.
 
+Technologies used:
+1. HTML5
+1. CSS3
+1. Bootstrap
+1. jQuery
+1. Node
+1. Express
+1. Postgresql
+1. Nunjucks
+1. Knex
+
 <!-- dummy version -->
 To visit Pick Your Pasta, go to:
 https://pickyourpasta.herokuapp.com

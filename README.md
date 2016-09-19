@@ -11,6 +11,7 @@ To visit Pick Your Pasta, go to:
 https://pickyourpasta.herokuapp.com
 
 To run locally:
+
 1. Fork/clone this repo
 1. npm install
 1. create .env file with a SECRET_KEY and NODE_ENV (set to environment)

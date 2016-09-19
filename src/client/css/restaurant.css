@@ -15,12 +15,8 @@
   text-align: center;
 }
 
-.new-review > h4 {
+.new-review {
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 2px dotted black;
-}
-
-.review-block .new-review:not(:first-child) {
-  display: none;
 }

@@ -2,37 +2,37 @@ exports.seed = function(knex, Promise) {
   return Promise.all([
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1458644267420-66bc8a5f21e4'
+      image_url: 'https://hd.unsplash.com/photo-1471367029819-38078e88c3fb'
     })
     .where('cuisine', 'Thai'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1437526248130-8448edca2e36'
+      image_url: 'https://hd.unsplash.com/photo-1428660386617-8d277e7deaf2'
     })
     .where('cuisine', 'American'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1454334281609-87a89762912c'
+      image_url: 'https://hd.unsplash.com/photo-1470338950318-40320a722782'
     })
     .where('cuisine', 'Indian'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1470324161839-ce2bb6fa6bc3'
+      image_url: 'https://hd.unsplash.com/photo-1456006231177-735d43fb45ac'
     })
     .where('cuisine', 'Greek'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1464901978424-7ccc357ddf95'
+      image_url: 'https://hd.unsplash.com/photo-1453831362806-3d5577f014a4'
     })
     .where('cuisine', 'Caribbean'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1465911817134-741b5e473a1b'
+      image_url: 'https://hd.unsplash.com/photo-1464093515883-ec948246accb'
     })
     .where('cuisine', 'Japanese'),
     knex('restaurants')
     .update({
-      image_url: 'https://hd.unsplash.com/photo-1449791898646-5a6fdfa4b4dd'
+      image_url: 'https://hd.unsplash.com/photo-1453831210728-695502f9f795'
     })
     .where('cuisine', 'Italian')
   ]);

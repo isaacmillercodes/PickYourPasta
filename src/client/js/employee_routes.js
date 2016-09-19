@@ -5,20 +5,20 @@ $(document).on('click', '#employee_delete', function() {
     const employeeId = $this.attr('data-id');
     $.ajax({
       type: 'DELETE',
-      url: `/delete/${employeeId}`
-    })
-    .done((data) => {
-      location.reload();
-      console.log(data);
-    })
-    .fail((err) => {
-      console.log(err);
+      url: `/employees/delete/${employeeId}`,
+      success: function(result) {
+        window.location = result;
+      },
+      error: function(error) {
+        console.log(error);
+      }
     });
   }
 });
 
-// $(document).on('click', '#employee_edit', function() {
-//
-//
-//
-// });
+
+$(document).on('click', '#employee_edit', function() {
+  window.location.replace('./employees/edit/' + this.id);
+
+
+});

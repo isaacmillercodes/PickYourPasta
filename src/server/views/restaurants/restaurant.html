@@ -19,7 +19,7 @@
       {% endif %}
   </div>
   <!-- reviews pane -->
-  <div class="col-md-6"</div>
+  <div class="review-block col-md-6"</div>
   <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
   {% if currentUser.is_admin === false and alreadyReviewed === false %}
     <h4 class="new-review"><a href="/restaurants/{{restaurants.id}}/reviews/{{currentUser.id}}/new">Add New Review</a></h4>

@@ -15,18 +15,12 @@
   text-align: center;
 }
 
-.new-review, h4 {
+.new-review > h4 {
   text-align: center;
   padding-bottom: 10px;
   border-bottom: 2px dotted black;
 }
 
-/*.review-block .new-review:not(:first-child) {
+.review-block .new-review:not(:first-child) {
   display: none;
-}*/
-
-/*.user-review {
-  height: 1em;
-  padding: 2px;
-  overflow: hidden;
-}*/
+}

@@ -92,11 +92,14 @@ router.put('/:id/edit', (req, res, next) => {
 router.delete('/delete/:id', (req,res,next) => {
   console.log('here');
   const restID = parseInt(req.params.id);
-  knex('restaurants').where({
-    id: restID
-  })
-  .del()
-  .then((results) => {
+
+  let deleteReviews = knex('reviews').where('rest_id', restID).del();
+  let deleteRestaurant = knex('restaurants').where('id', restID).del();
+  Promise.all([
+    deleteReviews,
+    deleteRestaurant
+  ])
+  .then((result) => {
     console.log('we did it');
     res.send('/restaurants');
   })

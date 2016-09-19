@@ -98,7 +98,7 @@ router.delete('/delete', (req, res, next) => {
 
   knex('reviews').where({
     rest_id: restID,
-    user_id:  userID
+    user_id: userID
   })
   .del()
   .then((result) => {

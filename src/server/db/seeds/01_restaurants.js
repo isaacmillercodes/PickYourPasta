@@ -10,14 +10,14 @@ exports.seed = function(knex, Promise) {
 
 //helper functions
 let cuisine = [
-  'Greek',
-  'Indian',
-  'Japanese',
-  'Thai',
-  'Italian',
-  'Caribbean',
-  'Italian',
-  'American'
+  'Linguine',
+  'Rigatoni',
+  'Egg Noodle',
+  'Fusilli',
+  'Farfalle',
+  'Macaroni',
+  'Spaghetti',
+  'Ravioli'
 ];
 
 //assign random cuisine

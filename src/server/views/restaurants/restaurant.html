@@ -40,7 +40,7 @@
       {% endfor %}
       <div class="date_review">{{result.created_at|date("MMM DD, YYYY")}}</div>
       <div class="user_review" >{{result.review}}</div>
-      {% if currentUser.id === result.user_id %}
+      {% if currentUser.id === result.user_id and currentUser.is_admin === false %}
         <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
         <button href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete Review</button>
       {% endif %}

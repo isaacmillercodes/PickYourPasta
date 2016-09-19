@@ -6,18 +6,20 @@
 <body>
 <!-- main content -->
 
-<form class="form-horizontal" method="POST" action="/restaurants/{{restaurant.id}}/employees/{{user.id}}/new" id="addEmployeeForm">
+<form class="editEmployee">
   <div class="form-group">
-    <label for="firstName" class="col-sm-2 control-label">First Name</label>
-    <input type='text'>
-    <label for="lastName" class="col-sm-2 control-label">Last Name</label>
-    <input type='text'>
-    <label for="title" class="col-sm-2 control-label">Title</label>
-    <input type='text'>
+    <label for="first_name" class="col-sm-2 control-label">First Name</label>
+    <input type="text" name="first_name" class="form-control first_name" value={{employee.first_name}}>
+    <label for="last_name" class="col-sm-2 control-label">Last Name</label>
+    <input type="text" name="last_name" class="form-control last_name" value={{employee.last_name}}>
+    <label for="emp_title" class="col-sm-2 control-label">Title</label>
+    <input type="text" name="emp_title" class="form-control emp_title" value="{{employee.title}}">
   </div>
+  <input type="hidden" name="rest_id" class="hidden hiddenRestId" value={{employee.rest_id}}>
+  <input type="hidden" name="emp_id" class="hidden hiddenEmpId" value={{employee.id}}>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-8">
-      <button type="submit" class="btn btn-default addReview">Submit New Employee</button>
+      <button type="submit" class="btn btn-default editEmployee">Edit Employee</button>
     </div>
   </div>
 </form>

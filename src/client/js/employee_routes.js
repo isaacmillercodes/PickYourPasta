@@ -16,9 +16,30 @@ $(document).on('click', '#employee_delete', function() {
   }
 });
 
+$('.editEmployee').on('submit', e => {
+  e.preventDefault();
+  const restID = parseInt($('.hiddenRestId').val());
+  const empID = parseInt($('.hiddenEmpId').val());
+  const firstName = $('.first_name').val();
+  const lastName = $('.last_name').val();
+  const title = $('.emp_title').val();
 
-$(document).on('click', '#employee_edit', function() {
-  window.location.replace('./employees/edit/' + this.id);
+  const updatedEmployee = {
+    first_name: firstName,
+    last_name: lastName,
+    title: title
+  };
 
-
+  $.ajax({
+    url: '/restaurants/' + restID + '/employees/' + empID + '/edit',
+    type: 'PUT',
+    data: JSON.stringify(updatedEmployee),
+    contentType: 'application/json',
+    success: function(result) {
+      window.location = result;
+    },
+    error: function(error) {
+      console.log(error);
+    }
+  });
 });

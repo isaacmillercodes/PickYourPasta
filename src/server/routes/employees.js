@@ -1,23 +1,44 @@
 const express = require('express');
-const router = express.Router();
+const router = express.Router({mergeParams: true});
 const knex = require('../db/knex');
 
-router.put('employees/:id/edit', (req, res, next) => {
-  const id = parseInt(req.params.id);
+router.get('/edit', (req, res, next) => {
+  const restID = parseInt(req.params.restID);
+  const empID = parseInt(req.params.empID);
+
+  console.log(restID);
+  console.log(empID);
+
+  knex('employees')
+  .where({
+    id: empID,
+    rest_id: restID
+  })
+  .first()
+  .then(results => {
+    const renderObject = {
+      employee: results
+    };
+    console.log(renderObject.employee);
+    res.render('restaurants/employees/edit', renderObject);
+  });
+});
+
+router.put('/edit', (req, res, next) => {
+  const restID = parseInt(req.params.restID);
+  const empID = parseInt(req.params.empID);
   const first_name = req.body.first_name;
   const last_name = req.body.last_name;
   const title = req.body.title;
-  console.log('hello');
   knex('employees')
-  .where('id', id)
+  .where('employees.id', empID)
   .update({
-    first_name : first_name,
-    last_name : last_name,
-    title : title
-
+    first_name: first_name,
+    last_name: last_name,
+    title: title
   })
-  .then(restaurant => {
-    res.send('/restaurants/' + id);
+  .then(employee => {
+    res.send('/restaurants/' + restID);
   })
   .catch(error => {
     console.log(error);

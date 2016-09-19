@@ -17,8 +17,8 @@ $(document).on('click', '#employee_delete', function() {
   }
 });
 
-$(document).on('click', '#employee_edit', function() {
-
-
-
-});
+// $(document).on('click', '#employee_edit', function() {
+//
+//
+//
+// });

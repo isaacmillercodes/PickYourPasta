@@ -37,10 +37,10 @@ router.get('/:id', (req,res,next) => {
     renderObject.reviews = results[1];
     renderObject.users = results[2];
     renderObject.employees = results[3];
-      let indRatings = results[1];
-      let avgRate = 0;
-      let finAve = 0;
-      indRatings.forEach((rate) => {
+    let indRatings = results[1];
+    let avgRate = 0;
+    let finAve = 0;
+    indRatings.forEach((rate) => {
         avgRate += indRatings.rating;
       });
        finAve = parseFloat(avgRate / indRatings.length);

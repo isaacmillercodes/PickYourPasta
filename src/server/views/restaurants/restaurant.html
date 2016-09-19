@@ -13,13 +13,35 @@
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
       {% if currentUser.is_admin == true %}
+        <table>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Title</th>
+            <th></th>
+            <th></th>
+          </tr>
+          {% for employee in employees %}
+            {% if employee.rest_id === restaurants.id %}
+              <tr>
+                  <td>{{employee.first_name}}</td>
+                  <td>{{employee.last_name}}</td>
+                  <td>{{employee.title}}</td>
+                  <td><button data-id='{{employee.id}}' id='employee_delete'>Delete</button></td>
+                  <td><button data-id='{{employee.id}}' id='employee_edit'>Edit</button></td>
+              </tr>
+
+
+            {% endif %}
+          {% endfor %}
+        </table>
       <a href="/restaurants/{{restaurants.id}}/edit" class="btn-primary btn">Edit Restaurant</a>
       <button
         <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
       {% endif %}
   </div>
   <!-- reviews pane -->
-  <div class="col-md-6"</div>
+  <div class="review-block col-md-6"</div>
   <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
   {% if currentUser.is_admin == false and alreadyReviewed == false %}
     <h4 class="new-review"><a href="/restaurants/{{restaurants.id}}/reviews/{{currentUser.id}}/new">Add New Review</a></h4>
@@ -47,7 +69,10 @@
       <hr>
     </div>
     {% endfor %}
-  </div>
+    </div>
 </div>
-</div>
+
+</div><br>
+
+
 {% endblock %}

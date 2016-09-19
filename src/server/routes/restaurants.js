@@ -30,7 +30,6 @@ router.get('/:id', (req,res,next) => {
     getEmployees
   ])
   .then((results) => {
-
     const renderObject = {};
     let restRating = 0;
     renderObject.restaurants = results[0];
@@ -45,6 +44,15 @@ router.get('/:id', (req,res,next) => {
       });
        finAve = parseFloat(avgRate / indRatings.length);
     renderObject.avg = finAve;
+    renderObject.alreadyReviewed = false;
+    if (req.session.user) {
+      results[2].forEach(user => {
+        if (user.id === req.session.user.id) {
+          renderObject.alreadyReviewed = true;
+        }
+      });
+    }
+
     res.render('restaurants/restaurant', renderObject);
   });
 });
@@ -53,8 +61,42 @@ router.get('/new', (req, res, next) => {
   res.render('restaurants/new');
 });
 
-router.get('/edit', (req, res, next) => {
-  res.render('restaurants/restaurant-edit');
+router.get('/:id/edit', (req, res, next) => {
+  const id = parseInt(req.params.id);
+  knex('restaurants').where('restaurants.id', id)
+  .then(results => {
+    const renderObject = {};
+    renderObject.restaurant = results[0];
+    res.render('restaurants/restaurant-edit', renderObject);
+  });
+});
+
+router.put('/:id/edit', (req, res, next) => {
+  const restId = parseInt(req.params.id);
+  const name = req.body.name;
+  const city = req.body.city;
+  const state = req.body.state;
+  const cuisine = req.body.cuisine;
+  const description = req.body.description;
+  const imageUrl = req.body.imageUrl;
+  console.log('hello');
+  knex('restaurants')
+  .where('restaurants.id', restId)
+  .update({
+    name: name,
+    city: city,
+    state: state,
+    cuisine: cuisine,
+    description: description,
+    image_url: imageUrl
+  })
+  .then(restaurant => {
+    res.send('/restaurants/' + restId);
+  })
+  .catch(error => {
+    console.log(error);
+  });
+
 });
 
 router.delete('/delete/:id', (req,res,next) => {

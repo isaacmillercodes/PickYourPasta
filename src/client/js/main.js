@@ -87,4 +87,38 @@
     // }
   });
 
+  $('.editRestaurant').on('click', e => {
+    e.preventDefault();
+    console.log('something');
+    const restID = parseInt($('.hiddenRestId').val());
+    const name = $('#restName').val();
+    const city = $('#city').val();
+    const state = $('#state').val();
+    const cuisine = $('#cuisine').val();
+    const description = $('#description').text();
+    const imageUrl = $('#imageUrl').val();
+
+    const updatedRestaurant = {
+      name: name,
+      city: city,
+      state: state,
+      cuisine: cuisine,
+      description: description,
+      imageUrl: imageUrl
+    };
+
+    $.ajax({
+      url: '/restaurants/' + restID + '/edit',
+      type: 'PUT',
+      data: JSON.stringify(updatedRestaurant),
+      contentType: 'application/json',
+      success: function(result) {
+        window.location = result;
+      },
+      error: function(error) {
+        console.log(error);
+      }
+    });
+  });
+
 })();

@@ -16,7 +16,7 @@
     app.use((req, res, next) => {
       if (req.session) app.locals.currentUser = req.session.user;
       next();
-    })
+    });
 
     // *** register routes *** //
     app.use('/', routes);

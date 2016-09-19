@@ -12,14 +12,18 @@
         <span class="stars"></span>
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
-      <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
+      {% if currentUser.is_admin === true %}
+      <a href="/restaurants/{{restaurants.id}}/edit" class="btn-primary btn">Edit Restaurant</a>
+      <button
+        <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
+      {% endif %}
   </div>
   <!-- reviews pane -->
-  <div class="col-md-6"</div>
+  <div class="review-block col-md-6"</div>
   <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
-  {% for result in reviews %}
-  <h4 class="new-review"><a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/new">Add New Review</a></h4>
-  {% endfor %}
+  {% if currentUser.is_admin === false and alreadyReviewed === false %}
+    <h4 class="new-review"><a href="/restaurants/{{restaurants.id}}/reviews/{{currentUser.id}}/new">Add New Review</a></h4>
+  {% endif %}
   <div class="review_pane">
     <div id="sumnumber_reviews"></div>
     <div class="review-column">
@@ -29,15 +33,17 @@
       <span><i class="fa fa-star" aria-hidden="true"></i></span>
       {% endfor %}
       <br>
-        {% for user in users %}
-          {% if user.id === result.user_id %}
-            <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name.substring(0, 1) + "."}}</b>
-          {% endif %}
-        {% endfor %}
+      {% for user in users %}
+        {% if user.id === result.user_id %}
+          <b class="userName" data-userid="{{user.id}}">{{user.first_name}} {{user.last_name.substring(0, 1) + "."}}</b>
+        {% endif %}
+      {% endfor %}
       <div class="date_review">{{result.created_at|date("MMM DD, YYYY")}}</div>
       <div class="user_review" >{{result.review}}</div>
-      <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
-      <button href="/restaurants/{{result.rest_id}}/views/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete</button>
+      {% if currentUser.id === result.user_id and currentUser.is_admin === false %}
+        <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
+        <button href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm">Delete Review</button>
+      {% endif %}
       <hr>
     </div>
     {% endfor %}

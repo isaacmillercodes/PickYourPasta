@@ -47,6 +47,24 @@
       <hr>
     </div>
     {% endfor %}
+    <div class="employees">{{restaurant.name}} 's Employees
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Title</th>
+    </tr>
+    {% for employee in employees%}
+      {% if employee.rest_id === restaurant.id %}
+        <tr>
+            <td>{{employee.firstName}}</td>
+            <td>{{employee.lastName}}</td>
+            <td>{{employee.title}}</td>
+        </tr>
+        <button data-id='{{employee.id}}' id='employee_delete'>Delete</button>
+        <button data-id='{{employee.id}}' id='employee_edit'>Edit</button>
+      {% endif %}
+    {% endfor %}
+    </div>
   </div>
 </div>
 </div>

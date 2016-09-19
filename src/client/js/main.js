@@ -6,17 +6,16 @@
     const answer = confirm('Are you sure?');
     if (answer) {
       const $this = $(this);
-      const restaurantId = $this.attr('data-id');
+      const restaurantId = parseInt($this.data('id'));
       $.ajax({
         type: 'DELETE',
-        url: `/delete/${restaurantId}`
-      })
-      .done((data) => {
-        location.reload();
-        console.log(data);
-      })
-      .fail((err) => {
-        console.log(err);
+        url: '/restaurants/delete/' + restaurantId,
+        success: function(result) {
+          window.location = result;
+        },
+        error: function(error) {
+          console.log(error);
+        }
       });
     }
   });

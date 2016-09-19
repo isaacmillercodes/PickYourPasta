@@ -91,29 +91,19 @@ router.put('/:id/edit', (req, res, next) => {
 
 router.delete('/delete/:id', (req,res,next) => {
   console.log('here');
-  const id = parseInt(req.params.id);
-  knex('restaurants')
+  const restID = parseInt(req.params.id);
+  knex('restaurants').where({
+    id: restID
+  })
   .del()
-  .where('id',id)
-  .returning('*')
   .then((results) => {
-    if (results.length) {
-      res.status(200).json({
-        status:'success',
-        message: `${results[0].name} is gone!`
-      });
-    } else {
-      res.status(404).json({
-        status: 'error',
-        message: 'this Id does not exist'
-      });
-    }
+    console.log('we did it');
+    res.send('/restaurants');
   })
   .catch((err) => {
-    res.status(500).json({
-      status: 'errror',
-      message: 'Something bad happened!'
-    });
+    console.log('we didn\'t do it');
+    return next(err);
+
   });
 });
 

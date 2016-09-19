@@ -32,6 +32,7 @@ router.get('/:id', (req,res,next) => {
   .then((results) => {
     const renderObject = {};
     let restRating = 0;
+    console.log(results[3]);
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];

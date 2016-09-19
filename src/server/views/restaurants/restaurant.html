@@ -15,7 +15,7 @@
       <button class="restaurant_delete-btn btn-danger btn" data-id="{{restaurants.id}}">Delete</button>
   </div>
   <!-- reviews pane -->
-  <div class="col-md-6"</div>
+  <div class="review-block col-md-6"</div>
   <h2 class="review_title">Displaying <b>{{reviews.length}}</b>&nbsp;Reviews</h2>
   {% for result in reviews %}
   <h4 class="new-review"><a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/new">Add New Review</a></h4>

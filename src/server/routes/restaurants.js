@@ -32,7 +32,6 @@ router.get('/:id', (req,res,next) => {
   .then((results) => {
     const renderObject = {};
     let restRating = 0;
-    console.log(results[3]);
     renderObject.restaurants = results[0];
     renderObject.reviews = results[1];
     renderObject.users = results[2];
@@ -41,11 +40,13 @@ router.get('/:id', (req,res,next) => {
     let avgRate = 0;
     let finAve = 0;
     indRatings.forEach((rate) => {
-        avgRate += indRatings.rating;
-      });
-       finAve = parseFloat(avgRate / indRatings.length);
+      avgRate += indRatings.rating;
+    });
+    finAve = parseFloat(avgRate / indRatings.length);
     renderObject.avg = finAve;
     renderObject.alreadyReviewed = false;
+    console.log(renderObject);
+    console.log(req.session.user);
     if (req.session.user) {
       results[2].forEach(user => {
         if (user.id === req.session.user.id) {

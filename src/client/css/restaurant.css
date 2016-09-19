@@ -21,6 +21,6 @@
   border-bottom: 2px dotted black;
 }
 
-.review-block .new-review:not(:first-child) {
+/*.review-block .new-review:not(:first-child) {
   display: none;
-}
+}*/

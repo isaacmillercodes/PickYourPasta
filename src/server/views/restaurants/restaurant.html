@@ -12,7 +12,7 @@
         <span class="stars"></span>
         <div class="restarant_description">{{restaurants.description}}</div>
         <div class="cuisine">{{restaurants.cuisine}}</div>
-{% if currentUser.is_admin == true %}
+      {% if currentUser.is_admin == true %}
         <table class="table">
           <thead class="thead-inverse">
           <tr>
@@ -62,7 +62,7 @@
       {% endfor %}
       <div class="date_review">{{result.created_at|date("MMM DD, YYYY")}}</div>
       <div class="user_review" >{{result.review}}</div>
-      {% if currentUser.id === result.user_id and currentUser.is_admin === false %}
+      {% if currentUser.id === result.user_id and currentUser.is_admin == false %}
         <a href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/edit" class="btn-primary btn btn-sm">Edit Review</a>
         <button href="/restaurants/{{result.rest_id}}/reviews/{{result.user_id}}/delete" class="deleteReview btn-danger btn btn-sm" data-id="{{result.rest_id}}" data-userid="{{result.user_id}}">Delete Review</button>
       {% endif %}
